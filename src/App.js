@@ -173,7 +173,7 @@ class Courses extends React.Component{
                       {i+1}.<input type="text" size={20}/>
                   <Grade value={v} onChange={this.gradeOnChange.bind(this,i)}/>
                   <Credits value={credits[i]} onChange={this.creditOnChange.bind(this,i)}/>
-                      <input type="button" value="add" onClick={this.addOnClick.bind(this,i)}/>
+                      <input type="button" value="add" onClick={this.addOnClick.bind(this,i+1)}/>
                   {
                 i > 0 &&
                  <input type="button" value="delete" onClick={this.deleteOnClick.bind(this,i)}/>
