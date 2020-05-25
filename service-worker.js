@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/gpa-calculator/precache-manifest.1d9f4ddcccda600fea2a043ba5b3da95.js"
+  "/gpa-calculator/precache-manifest.937fae06e80e9ea12b328d9cfb3767a9.js"
 );
 
 self.addEventListener('message', (event) => {
