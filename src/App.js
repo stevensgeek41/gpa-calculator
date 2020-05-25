@@ -184,7 +184,7 @@ class Courses extends React.Component{
         <br/>
         <input type="button" value="reset" onClick={this.resetOnClick}/>
         <Calculate grades={this.state.grades} credits={this.state.credits}/>
-        <h4>calculated according to <a href="http://e-catalog.jhu.edu/undergrad-students/academic-policies/grading/">jhu grading policies</a></h4>
+        <h4>calculated according to <a href="http://e-catalog.jhu.edu/undergrad-students/academic-policies/grading/" target="_blank">jhu grading policies</a></h4>
         </div>
         );
   }
