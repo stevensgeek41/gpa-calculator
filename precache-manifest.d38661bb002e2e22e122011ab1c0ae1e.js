@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "d1ba818e8e37eab5a8e1f66d7bce8cdb",
+    "revision": "0138d4ecedf3e8112556b5a54e5400f1",
     "url": "/gpa-calculator/index.html"
   },
   {
-    "revision": "da172e4a5f1fae50c765",
+    "revision": "2bfb552c4f1c0b74944b",
     "url": "/gpa-calculator/static/css/main.5f361e03.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/gpa-calculator/static/js/2.cb5125aa.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "da172e4a5f1fae50c765",
-    "url": "/gpa-calculator/static/js/main.5815fe1b.chunk.js"
+    "revision": "2bfb552c4f1c0b74944b",
+    "url": "/gpa-calculator/static/js/main.66cda837.chunk.js"
   },
   {
     "revision": "f12312fd335b25f8154d",
