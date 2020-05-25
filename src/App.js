@@ -50,7 +50,6 @@ function grade2point(grade){
       case "D+": val=1.3; break;
       case "D": val=1.0; break;
       case "F": val=0.0; break;
-      default: val=0.0;break;
   }
   return val;
 }
@@ -92,13 +91,14 @@ class Courses extends React.Component{
     this.state = {
       grades: ["A"],
       credits: [0.00],
-      flag: [0],
+      // flag: [0],
     };
     this.gradeOnChange = this.handleGradeChange.bind(this);
     this.creditOnChange = this.handleCreditChange.bind(this);
     this.deleteOnClick = this.handleDelete.bind(this);
     this.resetOnClick = this.handleReset.bind(this);
     this.textOnSubmit = this.handleTextSubmit.bind(this);
+    this.addOnClick = this.handleAdd.bind(this);
   }
   
   handleGradeChange(id,e){
@@ -111,36 +111,54 @@ class Courses extends React.Component{
     e.preventDefault();
     
   }
+  handleAdd(id){
+     const credits = this.state.credits.slice();
+    // const flag = this.state.flag.slice();
+    const grades = this.state.grades.slice();
+    credits.splice(id,0,0.00);
+    // flag.splice(id,1);
+    // if(id === this.state.flag.length-1){
+    //   flag[flag.length-1] = 0;
+    // }
+    grades.splice(id,0,"A");
+    this.setState({grades: grades, credits: credits, 
+                   // flag: flag
+                  });
+  }
   handleReset(e){
     const grades = ["A"];
     const credits = [0.00];
-    const flag = [0];
-    this.setState({grades: grades, credits: credits, flag: flag});
+    // const flag = [0];
+    this.setState({grades: grades, credits: credits, 
+                   // flag: flag
+                  });
   }
   handleCreditChange(id,e){
     const credits = this.state.credits.slice();
-    const flag = this.state.flag.slice();
+    // const flag = this.state.flag.slice();
     const grades = this.state.grades.slice();
     credits[id] = e.target.value;
-    if(flag[id] === 0){
-      flag[id]=1;
-      this.setState({grades: grades.concat(["A"]),credits: credits.concat([0.00]),flag: flag.concat([0])});
-    }else{
+    // if(flag[id] === 0){
+    //   flag[id]=1;
+    //   this.setState({grades: grades.concat(["A"]),credits: credits.concat([0.00]),flag: flag.concat([0])});
+    // }else{
       this.setState({credits: credits});
-    }
+    // }
   }
   
   handleDelete(id){
     const credits = this.state.credits.slice();
-    const flag = this.state.flag.slice();
+    // const flag = this.state.flag.slice();
     const grades = this.state.grades.slice();
     credits.splice(id,1);
-    flag.splice(id,1);
-    if(id === this.state.flag.length-1){
-      flag[flag.length-1] = 0;
-    }
+    // flag.splice(id,1);
+    // if(id === this.state.flag.length-1){
+    //   flag[flag.length-1] = 0;
+    // }
     grades.splice(id,1);
-    this.setState({grades: grades, credits: credits, flag: flag});
+    this.setState({grades: grades, credits: credits, 
+                   // flag: flag
+                  });
   }
   
   render(){
@@ -155,6 +173,7 @@ class Courses extends React.Component{
                       {i+1}.<input type="text" size={20}/>
                   <Grade value={v} onChange={this.gradeOnChange.bind(this,i)}/>
                   <Credits value={credits[i]} onChange={this.creditOnChange.bind(this,i)}/>
+                      <input type="button" value="add" onClick={this.addOnClick.bind(this,i)}/>
                   {
                 i > 0 &&
                  <input type="button" value="delete" onClick={this.deleteOnClick.bind(this,i)}/>
@@ -165,6 +184,7 @@ class Courses extends React.Component{
         <br/>
         <input type="button" value="reset" onClick={this.resetOnClick}/>
         <Calculate grades={this.state.grades} credits={this.state.credits}/>
+        <h4>calculated according to <a href="http://e-catalog.jhu.edu/undergrad-students/academic-policies/grading/">jhu grading policies</a></h4>
         </div>
         );
   }
@@ -183,4 +203,5 @@ function App(){
    
   );
 }
+
 export default App;
