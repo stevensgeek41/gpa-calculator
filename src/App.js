@@ -54,21 +54,6 @@ function grade2point(grade){
   return val;
 }
 
-function Table()
-{
-  return(
-    <table>
-      <thead>
-        <tr>
-          <td width={175} align="center">Class Title</td>
-          <td>Grade</td>
-          <td>Credits</td>
-        </tr>
-      </thead>
-    </table>
-  );
-}
-
 function Calculate(props){
   const l = props.grades.length;
   let gradeSum = 0;
@@ -166,21 +151,32 @@ class Courses extends React.Component{
     const credits = this.state.credits.slice();
     return (
       <div className="body">
-        <Table/>
-      <form onSubmit={this.textOnSubmit}>
+       
+      <table>
+        <thead>
+          <tr>
+            <td align="center">#</td>
+            <td align="center">Class Title</td>
+            <td align="center">Grade</td>
+            <td align="center">Credits</td>
+          </tr>
+        </thead>
+    
+     
         {grades.map((v,i)=>
-                 <div className={"course"+i} key={i}>
-                      {i+1}.<input type="text" size={20}/>
-                  <Grade value={v} onChange={this.gradeOnChange.bind(this,i)}/>
-                  <Credits value={credits[i]} onChange={this.creditOnChange.bind(this,i)}/>
-                      <input type="button" value="add" onClick={this.addOnClick.bind(this,i+1)}/>
+                 <tr className={"course"+i} key={i}>
+                      <td>{i+1}</td>
+                  <td><input type="text" size={20}/></td>
+                  <td><Grade value={v} onChange={this.gradeOnChange.bind(this,i)}/></td>
+                  <td><Credits value={credits[i]} onChange={this.creditOnChange.bind(this,i)}/></td>
+                      <td><input type="button" value="add" onClick={this.addOnClick.bind(this,i+1)}/></td>
                   {
                 i > 0 &&
-                 <input type="button" value="delete" onClick={this.deleteOnClick.bind(this,i)}/>
+                 <td><input type="button" value="delete" onClick={this.deleteOnClick.bind(this,i)}/></td>
                   }
-                 </div>
+                 </tr>
                   )}
-        </form>
+        </table>
         <br/>
         <input type="button" value="reset" onClick={this.resetOnClick}/>
         <Calculate grades={this.state.grades} credits={this.state.credits}/>
